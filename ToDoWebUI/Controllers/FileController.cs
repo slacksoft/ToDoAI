@@ -49,6 +49,18 @@ public class FileController : ControllerBase
         });
         return Ok(new { items = dirs.Concat(files).OrderBy(x => !x.isDirectory).ThenBy(x => x.name) });
     }
+
+    [HttpPost("delete")]
+    public IActionResult DeleteFile([FromBody] FilePathRequest req)
+    {
+        var root = ProjectController.RootDir;
+        if (string.IsNullOrEmpty(root)) return BadRequest("No project directory set");
+        var full = Path.Combine(root, req.Path);
+        if (!System.IO.File.Exists(full)) return BadRequest("File not found");
+        System.IO.File.Delete(full);
+        return Ok(new { message = $"Deleted {req.Path}" });
+    }
 }
 
 public record WriteFileRequest(string Path, string Content);
+public record FilePathRequest(string Path);
