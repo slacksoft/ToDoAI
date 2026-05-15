@@ -1,5 +1,7 @@
 # ToDoAI - AI Agent for Automated Project Generation
 
+[中文版说明](README.zh.md)
+
 An intelligent AI Agent that runs in the console, capable of understanding natural language requirements and automatically generating complete project code. Designed for compatibility with highly quantized models or models not specifically trained for agent tasks.
 
 ## Features
