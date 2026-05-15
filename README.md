@@ -102,8 +102,8 @@ ToDoAI/
 │   │   ├── TerminalController.cs  # Shell command execution API
 │   │   └── ConfigController.cs    # Settings load/save API
 │   └── wwwroot/
-│       ├── index.html             # VS-themed IDE layout
-│       ├── css/site.css           # Visual Studio dark theme
+│       ├── index.html             # IDE layout
+│       ├── css/site.css           # theme
 │       └── js/app.js              # Frontend logic
 ├── README.md              # English documentation (this file)
 └── README.zh.md           # Chinese documentation
