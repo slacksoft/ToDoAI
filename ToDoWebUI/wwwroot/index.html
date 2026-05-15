@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ToDoAI - Visual Studio IDE</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/vs2015.min.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body class="vs-dark">
+<div class="vs-titlebar">
+  <div class="title">ToDoAI <span>- AI Agent for Automated Project Generation</span></div>
+  <div style="margin-left:auto">
+    <span class="toggle-btn" onclick="openConfig()" title="Settings">&#x2699;</span>
+  </div>
+</div>
+
+<div class="app-layout">
+  <div class="main-area">
+    <div class="sidebar open" id="sidebar">
+      <div class="sidebar-header">
+        <span>Explorer</span>
+        <span style="display:flex;gap:6px">
+          <span class="toggle-btn" onclick="refreshFileTree()" title="Refresh">&#x21BB;</span>
+          <span class="toggle-btn" onclick="toggleSidebar()" title="Close">&#x2715;</span>
+        </span>
+      </div>
+      <div class="file-tree" id="fileTree"></div>
+    </div>
+
+    <div class="content-area">
+      <div class="tab-bar" id="tabBar"></div>
+      <div class="tab-content" id="tabContent"></div>
+    </div>
+  </div>
+
+  <div class="terminal-panel" id="terminalPanel">
+    <div class="terminal-header" onclick="toggleTerminal()">
+      <span>TERMINAL</span>
+      <span class="term-toggle" id="termToggle">&#x25BC;</span>
+    </div>
+    <div class="terminal-output" id="terminalOutput"></div>
+    <div class="terminal-input-line">
+      <span class="prompt">$</span>
+      <input type="text" id="terminalInput" placeholder="Run a command..." onkeydown="terminalKeydown(event)">
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay open" id="dirModal">
+  <div class="modal">
+    <h2>Welcome to ToDoAI</h2>
+    <p>Select a project directory to get started.</p>
+    <input type="text" id="dirInput" placeholder="C:\Users\...\MyProject" onkeydown="if(event.key==='Enter')setDirectory()">
+    <div class="btn-row">
+      <button class="btn-primary" onclick="setDirectory()">Open Directory</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="configModal">
+  <div class="modal">
+    <h2>Settings</h2>
+    <p>Configure AI provider connection.</p>
+    <label style="font-size:11px;color:#888;display:block;margin-bottom:4px">API Key</label>
+    <input type="text" id="cfgApiKey" placeholder="API Key">
+    <label style="font-size:11px;color:#888;display:block;margin-bottom:4px">Model</label>
+    <input type="text" id="cfgModel" placeholder="gemma-4-e4b-it">
+    <label style="font-size:11px;color:#888;display:block;margin-bottom:4px">Endpoint</label>
+    <input type="text" id="cfgEndpoint" placeholder="http://localhost:1234/v1/chat/completions">
+    <div class="btn-row" style="margin-top:16px">
+      <button class="btn-secondary" onclick="closeConfig()">Cancel</button>
+      <button class="btn-primary" onclick="saveConfig()">Save</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
