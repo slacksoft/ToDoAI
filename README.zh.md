@@ -100,8 +100,8 @@ ToDoAI/
 │   │   ├── TerminalController.cs  # Shell 命令执行 API
 │   │   └── ConfigController.cs    # 设置读取/保存 API
 │   └── wwwroot/
-│       ├── index.html             # VS 风格 IDE 布局
-│       ├── css/site.css           # Visual Studio 深色主题
+│       ├── index.html             # IDE 布局
+│       ├── css/site.css           # 主题
 │       └── js/app.js              # 前端逻辑
 ├── README.md              # 英文说明
 └── README.zh.md           # 本文件（英文版见 README.md）
